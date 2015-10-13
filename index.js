@@ -4,9 +4,11 @@ var query = require('pg-query');
 
 query.connectionParameters = process.env.DATABASE_URL;
 
-var get = require('sql-load')('sql/get');
-var del = require('sql-load')('sql/delete');
-var update = require('sql-load')('sql/update');
+var readfile = require('fs').readFileSync;
+
+var get = readfile(__dirname + '/sql/get.sql', 'utf8');
+var del = readfile(__dirname + '/sql/delete.sql', 'utf8');
+var update = readfile(__dirname + '/sql/update.sql', 'utf8');
 
 module.exports = {
   get: function(callback){
