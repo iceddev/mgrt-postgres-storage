@@ -1,6 +1,8 @@
 'use strict';
 
-var query = require('./client');
+var query = require('pg-query');
+
+query.connectionParameters = process.env.DATABASE_URL;
 
 var get = require('sql-load')('sql/get');
 var del = require('sql-load')('sql/delete');
